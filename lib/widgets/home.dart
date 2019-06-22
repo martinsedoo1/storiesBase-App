@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:storiesbase/widgets/stories.dart';
+import 'package:storiesbase/widgets/videos.dart';
+
+
 
 class Home extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -30,11 +32,10 @@ class Home extends StatelessWidget {
               indicatorColor: Colors.transparent,
           ),
           body: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
               StoriesPage(),
-              Center(
-                child: Text("page 2"),
-              ),
+              VideoPage(),
               Center(
                 child: Text("page 3"),
               ),
@@ -47,6 +48,4 @@ class Home extends StatelessWidget {
       ),
     );
   }
-
-
 }

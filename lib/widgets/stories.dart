@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:storiesbase/services/stories-service.dart';
 import 'package:storiesbase/widgets/story-details.dart';
 
+
 /*
 * The Stories page will contains all the stories
 * */
@@ -18,57 +19,70 @@ class StoriesPage extends StatefulWidget {
 * Used list view to display all the Lists of stories horizontally -
 * after getting them from the API
 * */
-class Stories extends State<StoriesPage> {
+class Stories extends State<StoriesPage> with AutomaticKeepAliveClientMixin<StoriesPage> {
   StoriesService appService = new StoriesService();
+  Future<List> _stories;
+
   var myList = new List();
 
   @override
+  bool get wantKeepAlive => true;
+
+
+  @override
+  void initState() {
+    _stories = appService.getStories();
+    super.initState();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return new Scaffold(
-        body: FutureBuilder(
-          future: appService.getStories(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-              case ConnectionState.done:
-                if (snapshot.hasData) {
-                  this.myList = snapshot.data;
-                  return Container(
-                    child: ListView.builder(
-                      itemCount: myList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return makeList(index);
-                      },
-                    ),
-                  );
-                } else if (snapshot.hasError) {
-                  return Center(
-                    child: Text(
-                      'Error, please try again later',
-                      style: TextStyle(color: Colors.red),
-                    ),
-                  );
-                }
-                return new Text('');
-              default:
-                return new Text('');
-            }
-          },
-        ),
+      body: FutureBuilder(
+        future: _stories,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return Center(child:  CircularProgressIndicator());
+            case ConnectionState.done:
+              if (snapshot.hasData) {
+                this.myList = snapshot.data;
+                return Container(
+                  child: ListView.builder(
+                    itemCount: myList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return makeList(index);
+                    },
+                  ),
+                );
+              } else if (snapshot.hasError) {
+                return Center(
+                  child: Text(
+                    'Error, please try again later',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                );
+              }
+              return new Text('');
+            default:
+              return new Text('');
+          }
+        },
+      ),
+
 
       /*
       * [FloatingActionButton] add new Story
       *
       * */
-
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         backgroundColor: Colors.pink,
       ),
-
     );
   }
-
 
   /*
   * This widget will create a lists by the length of object
@@ -106,8 +120,6 @@ class Stories extends State<StoriesPage> {
     );
   }
 
-
-  /*loadItem(item[itemIndex]),*/
   /*
   * [makeStoryWidget] will create the story and return it to the Listview
   * by clicking on the story it will navigate to the story details
@@ -125,21 +137,8 @@ class Stories extends State<StoriesPage> {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
-              return new Container(
-                margin: EdgeInsets.all(6),
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      child: ClipRRect(
-                        borderRadius: new BorderRadius.circular(8.0),
-                        child: Image.network(
-                          "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=150",
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              return Center(
+                child: CircularProgressIndicator(),
               );
             case ConnectionState.done:
               if (snapshot.hasData) {
@@ -166,8 +165,7 @@ class Stories extends State<StoriesPage> {
             Container(
               child: ClipRRect(
                 borderRadius: new BorderRadius.circular(8.0),
-                child: Image.network(
-                    story["picture"],
+                child: Image.network(story["picture"],
                     fit: BoxFit.cover, height: 300, width: 150),
               ),
             ),
@@ -194,7 +192,7 @@ class Stories extends State<StoriesPage> {
                     width: 150,
                     child: Text(
                       story["name"],
-                      style: TextStyle(fontSize: 17,color: Colors.white),
+                      style: TextStyle(fontSize: 17, color: Colors.white),
                     )),
               ),
             ),
@@ -231,9 +229,16 @@ class Stories extends State<StoriesPage> {
         ),
       ),
       onTap: () => {
-        Navigator.of(context).push(CupertinoPageRoute(builder: (context) =>  ViewStory())),
-      },
+            Navigator.of(context)
+                .push(CupertinoPageRoute(builder: (context) => ViewStory())),
+          },
     );
-
   }
+
 }
+
+
+
+
+
+
