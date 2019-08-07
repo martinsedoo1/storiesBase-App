@@ -1,12 +1,9 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:storiesbase/widgets/home.dart';
+import 'package:storiesbase/screens/home.dart';
 
 void main() => runApp(new StoriesBase());
 
-
-class StoriesBase extends StatelessWidget{
+class StoriesBase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
