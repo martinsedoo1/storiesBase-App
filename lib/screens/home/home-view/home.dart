@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:storiesbase/screens/stories.dart';
-import 'package:storiesbase/screens/videos.dart';
-import 'package:storiesbase/screens/widgets/custom-bottom-app-bar.dart';
+import 'package:storiesbase/screens/stories/stories-view/stories.dart';
+import 'package:storiesbase/screens/videos/videos-view/videos.dart';
+import 'package:storiesbase/screens/home/widgets/custom-bottom-app-bar.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class Home extends StatefulWidget {

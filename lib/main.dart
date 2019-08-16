@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:storiesbase/screens/home.dart';
+import 'package:storiesbase/screens/home/home-view/home.dart';
 
 void main() => runApp(new StoriesBase());
 

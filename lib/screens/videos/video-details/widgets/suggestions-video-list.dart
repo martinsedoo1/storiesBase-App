@@ -10,11 +10,11 @@ class SuggestionsVideoList extends StatefulWidget {
 class List extends State<SuggestionsVideoList> {
   @override
   Widget build(BuildContext context) {
-    return videoList();
+    return suggestionVideoList();
   }
 }
 
-Widget videoList() {
+Widget suggestionVideoList() {
   return Container(
     child: Row(
       children: <Widget>[
@@ -88,6 +88,44 @@ Widget videoList() {
                 )
               ],
             )),
+      ],
+    ),
+  );
+}
+
+
+
+
+
+
+
+
+Widget videoListHeader() {
+  return Container(
+    margin: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Container(
+          child: Text(
+            "Videos",
+            style: TextStyle(
+              color: Color(0xFF1E2850),
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        Container(
+          child: Text(
+            "New stories",
+            style: TextStyle(
+              color: Color(0xFF7D15C1),
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
       ],
     ),
   );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:storiesbase/screens/map.dart';
+import 'package:storiesbase/screens/map/map-view/map.dart';
 
 class ViewStory extends StatefulWidget {
   @override
@@ -23,16 +23,6 @@ class StoryDetails extends State<ViewStory>
     super.initState();
     _tabController = TabController(vsync: this, length: 3);
     _scrollController = ScrollController();
-    _scrollController.addListener(() {
-      setState(() {
-        if (_scrollController.position.pixels > 400.0) {
-          _animateUserInfoWidget(0.0, 0.0, 0.0);
-        }
-        if (_scrollController.position.pixels < 400.0) {
-          _animateUserInfoWidget(5.0, 5.0, 20);
-        }
-      });
-    });
   }
 
   /*

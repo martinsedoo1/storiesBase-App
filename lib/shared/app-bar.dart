@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:storiesbase/screens/widgets/search.dart';
+import 'package:storiesbase/screens/home/widgets/search.dart';
 
 class SliverAppBarView extends StatefulWidget {
   @override
