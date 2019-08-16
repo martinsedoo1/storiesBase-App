@@ -9,7 +9,7 @@ Widget listVideo(BuildContext context) {
       CupertinoPageRoute(builder: (context) => VideoDetails()),
     ),
     child: Container(
-      margin: EdgeInsets.only(bottom: 15, left: 10, right: 10, top: 0),
+      margin: EdgeInsets.only(bottom: 15, left: 10, right: 10, top: 5),
       child: Column(
         children: <Widget>[
           Stack(

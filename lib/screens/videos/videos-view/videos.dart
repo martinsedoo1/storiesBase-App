@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:storiesbase/screens/videos/video-details/video-details.dart';
 import 'package:storiesbase/screens/videos/videos-view/widgets/videos-list.dart';
-import 'package:storiesbase/shared/app-bar.dart';
+import 'package:storiesbase/screens/home/widgets/app-bar.dart';
+import 'package:storiesbase/shared/reusable-widgets/nested-scroll-view.dart';
 import 'package:video_player/video_player.dart';
 
 class VideosPage extends StatefulWidget {
@@ -40,26 +41,17 @@ class Videos extends State<VideosPage> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: "bassam",
-      child: Material(
-        child: CustomScrollView(
-          controller: _scrollViewController,
-          slivers: <Widget>[
-            SliverAppBarView(),
-            SliverPadding(
-              padding: EdgeInsets.only(bottom: 100, top: 15),
-              sliver: new SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) => listVideo(context),
-                  childCount: 10,
-                ),
-              ),
-            ),
-          ],
+    return CustomNestedScrollView(
+      nestedScrollViewBody: MediaQuery.removePadding(
+        removeTop: true,
+        context: context,
+        child: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (BuildContext context, int index) {
+            return listVideo(context);
+          },
         ),
       ),
     );
   }
 }
-

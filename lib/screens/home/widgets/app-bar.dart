@@ -13,6 +13,8 @@ class AppBarView extends State<SliverAppBarView> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      pinned: false,
+      snap: true,
       floating: true,
       forceElevated: true,
       backgroundColor: Colors.white,

@@ -4,7 +4,7 @@ import 'package:storiesbase/screens/stories/stories-view/widgets/story.dart';
 
 Widget storiesList(story, context) {
   return  Padding(
-    padding: EdgeInsets.symmetric(vertical: 0),
+    padding: EdgeInsets.only(top: 10),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
