@@ -3,6 +3,10 @@ import 'package:flutter/widgets.dart';
 import 'package:storiesbase/screens/home/widgets/search.dart';
 
 class SliverAppBarView extends StatefulWidget {
+
+  final GlobalKey<ScaffoldState> scaffoldKey;
+  const SliverAppBarView({Key key, this.scaffoldKey}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return AppBarView();
@@ -19,7 +23,7 @@ class AppBarView extends State<SliverAppBarView> {
       forceElevated: true,
       backgroundColor: Colors.white,
       leading: InkWell(
-        onTap: () => {},
+        onTap: () => {widget.scaffoldKey.currentState.openDrawer()},
         child: new Padding(
           padding: const EdgeInsets.all(8.0),
           child: CircleAvatar(

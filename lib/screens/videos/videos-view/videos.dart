@@ -8,6 +8,9 @@ import 'package:storiesbase/shared/reusable-widgets/nested-scroll-view.dart';
 import 'package:video_player/video_player.dart';
 
 class VideosPage extends StatefulWidget {
+  final GlobalKey<ScaffoldState> scaffoldKey;
+  const VideosPage({Key key, this.scaffoldKey}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return Videos();
@@ -42,6 +45,7 @@ class Videos extends State<VideosPage> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return CustomNestedScrollView(
+      scaffoldKey: widget.scaffoldKey,
       nestedScrollViewBody: MediaQuery.removePadding(
         removeTop: true,
         context: context,

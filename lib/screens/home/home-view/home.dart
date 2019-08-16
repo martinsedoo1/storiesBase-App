@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:storiesbase/screens/home/widgets/app-bar.dart';
 import 'package:storiesbase/screens/stories/stories-view/stories.dart';
 import 'package:storiesbase/screens/videos/videos-view/videos.dart';
 import 'package:storiesbase/screens/home/widgets/custom-bottom-app-bar.dart';
@@ -13,20 +12,22 @@ class Home extends StatefulWidget {
 }
 
 class HomePage extends State<Home> with TickerProviderStateMixin {
+  static GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   int _selectPage = 0;
   final pages = [
-    StoriesPage(),
-    VideosPage(),
+    StoriesPage(scaffoldKey: _scaffoldKey),
+    VideosPage(scaffoldKey: _scaffoldKey),
     Container(
       child: Text(
         "Profile",
-        style: TextStyle(fontSize: 16),
+        style: TextStyle(fontSize: 16, color: Colors.black),
       ),
     ),
     Container(
       child: Text(
         "Profile",
-        style: TextStyle(fontSize: 16),
+        style: TextStyle(fontSize: 16, color: Colors.black),
       ),
     ),
   ];
@@ -47,6 +48,8 @@ class HomePage extends State<Home> with TickerProviderStateMixin {
     FlutterStatusbarcolor.setStatusBarColor(Colors.blueGrey);
     FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: Drawer(),
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(

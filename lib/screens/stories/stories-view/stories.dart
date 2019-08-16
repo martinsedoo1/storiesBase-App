@@ -11,6 +11,9 @@ import 'package:storiesbase/shared/reusable-widgets/nested-scroll-view.dart';
 * The Stories page will contains all the stories
 * */
 class StoriesPage extends StatefulWidget {
+  final GlobalKey<ScaffoldState> scaffoldKey;
+  const StoriesPage({Key key, this.scaffoldKey}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return Stories();
@@ -54,6 +57,7 @@ class Stories extends State<StoriesPage>
   Widget build(BuildContext context) {
     super.build(context);
     return CustomNestedScrollView(
+      scaffoldKey: widget.scaffoldKey,
       nestedScrollViewBody: FutureBuilder(
         future: _storiesFuture,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
