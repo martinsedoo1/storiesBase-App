@@ -58,19 +58,19 @@ class HomePage extends State<Home> with TickerProviderStateMixin {
         index: _selectPage,
         children: pages,
       ),
-      bottomNavigationBar: FABBottomAppBar(
+      bottomNavigationBar: CustomBottomAppBar(
         onTabSelected: _selectedTab,
         selectedColor: Colors.blue,
         notchedShape: CircularNotchedRectangle(),
         items: [
-          FABBottomAppBarItem(iconData: Icons.home, text: 'Home'),
-          FABBottomAppBarItem(
+          BottomAppBarItem(iconData: Icons.home, text: 'Home'),
+          BottomAppBarItem(
               iconData: Icons.videocam, text: 'Videos', rightMargin: 35),
-          FABBottomAppBarItem(
+          BottomAppBarItem(
               iconData: Icons.notifications,
               text: 'Notifications',
               leftMargin: 35),
-          FABBottomAppBarItem(iconData: Icons.menu, text: 'More'),
+          BottomAppBarItem(iconData: Icons.menu, text: 'More'),
         ],
       ),
     );

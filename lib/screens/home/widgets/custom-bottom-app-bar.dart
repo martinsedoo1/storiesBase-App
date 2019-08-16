@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FABBottomAppBarItem {
-  FABBottomAppBarItem(
+class BottomAppBarItem {
+  BottomAppBarItem(
       {this.iconData, this.text, this.leftMargin, this.rightMargin});
 
   IconData iconData;
@@ -10,8 +10,8 @@ class FABBottomAppBarItem {
   double rightMargin;
 }
 
-class FABBottomAppBar extends StatefulWidget {
-  FABBottomAppBar({
+class CustomBottomAppBar extends StatefulWidget {
+  CustomBottomAppBar({
     this.items,
     this.centerItemText,
     this.height: 60.0,
@@ -23,7 +23,7 @@ class FABBottomAppBar extends StatefulWidget {
     this.onTabSelected,
   });
 
-  final List<FABBottomAppBarItem> items;
+  final List<BottomAppBarItem> items;
   final String centerItemText;
   final double height;
   final double iconSize;
@@ -34,10 +34,10 @@ class FABBottomAppBar extends StatefulWidget {
   final ValueChanged<int> onTabSelected;
 
   @override
-  State<StatefulWidget> createState() => FABBottomAppBarState();
+  State<StatefulWidget> createState() => CustomBottomAppBarState();
 }
 
-class FABBottomAppBarState extends State<FABBottomAppBar> {
+class CustomBottomAppBarState extends State<CustomBottomAppBar> {
   int _selectedIndex = 0;
 
   _updateIndex(int index) {
@@ -70,7 +70,7 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
   }
 
   Widget _buildTabItem({
-    FABBottomAppBarItem item,
+    BottomAppBarItem item,
     int index,
     ValueChanged<int> onPressed,
   }) {
