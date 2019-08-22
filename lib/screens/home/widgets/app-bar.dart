@@ -20,7 +20,7 @@ class AppBarView extends State<SliverAppBarView> {
       pinned: false,
       snap: true,
       floating: true,
-      forceElevated: true,
+      forceElevated: false,
       backgroundColor: Colors.white,
       leading: InkWell(
         onTap: () => {widget.scaffoldKey.currentState.openDrawer()},

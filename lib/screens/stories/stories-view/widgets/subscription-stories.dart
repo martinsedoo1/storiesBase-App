@@ -4,6 +4,7 @@ Widget subscriptionStories() {
   return Column(
     children: <Widget>[
       Container(
+        padding: EdgeInsets.only(left: 6),
         margin: EdgeInsets.only(top: 0),
         height: 100.0,
         child: ListView.builder(

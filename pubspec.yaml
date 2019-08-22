@@ -18,14 +18,14 @@ environment:
 
 dependencies:
 
-  timeline_list: "^0.0.3"
+
   http: "^0.12.0+2"
   sticky_headers: "^0.1.8"
   flutter_sticky_header: "^0.3.4"
   google_maps_flutter: "^0.5.16"
-  path_provider: "^0.5.0+1"
-  video_player: "^0.10.1+3"
-  flutter_statusbarcolor: any
+  flutter_svg: ^0.14.0
+  #flutter_statusbar_manager: ^1.0.2
+
 
 
   flutter:
@@ -53,10 +53,17 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/input1.mp4
-    - assets/input3.mp4
     - assets/image1.jpg
     - assets/image2.jpeg
+    - assets/svg-icons/user.svg
+    - assets/icons/tag.png
+    - assets/icons/timeline.png
+    - assets/icons/timeline1.png
+    - assets/icons/timeline2.png
+    - assets/icons/user.png
+    - assets/icons/private.png
+    - assets/icons/controls.png
+    - assets/icons/information.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

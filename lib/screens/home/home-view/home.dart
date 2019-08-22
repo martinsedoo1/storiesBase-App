@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:storiesbase/screens/home/widgets/sidebar-menu.dart';
 import 'package:storiesbase/screens/stories/stories-view/stories.dart';
 import 'package:storiesbase/screens/videos/videos-view/videos.dart';
 import 'package:storiesbase/screens/home/widgets/custom-bottom-app-bar.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -45,11 +45,12 @@ class HomePage extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Colors.blueGrey);
-    FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
     return Scaffold(
+      backgroundColor: Colors.white,
       key: _scaffoldKey,
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: Sidebar(),
+      ),
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
@@ -57,6 +58,7 @@ class HomePage extends State<Home> with TickerProviderStateMixin {
         tooltip: 'Increment',
         child: Icon(Icons.add),
         elevation: 2.0,
+        backgroundColor: Colors.blueAccent,
       ),
       body: IndexedStack(
         index: _selectPage,
@@ -80,3 +82,5 @@ class HomePage extends State<Home> with TickerProviderStateMixin {
     );
   }
 }
+
+

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:storiesbase/screens/map/map-view/map.dart';
+import 'package:storiesbase/shared/custom-tab-indicator.dart';
 
 class ViewStory extends StatefulWidget {
   @override
@@ -327,41 +328,5 @@ class StoryDetails extends State<ViewStory>
         );
       },
     );
-  }
-}
-
-/*
-*
-* CustomTabIndicator will paint the TabBar and animate it
-* [Offset] is the position from where the decoration should be drawn.
-*
-* */
-
-class CustomTabIndicator extends Decoration {
-  @override
-  _CustomPainter createBoxPainter([VoidCallback onChanged]) {
-    return new _CustomPainter(this, onChanged);
-  }
-}
-
-class _CustomPainter extends BoxPainter {
-  final CustomTabIndicator decoration;
-
-  _CustomPainter(this.decoration, VoidCallback onChanged)
-      : assert(decoration != null),
-        super(onChanged);
-
-  @override
-  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    assert(configuration != null);
-    assert(configuration.size != null);
-    final Rect rect =
-        Offset(offset.dx, (configuration.size.height / 2) - 40.0 / 2) &
-            Size(configuration.size.width, 40.0);
-    final Paint paint = Paint();
-    paint.color = Colors.blueAccent;
-    paint.style = PaintingStyle.fill;
-    canvas.drawRRect(
-        RRect.fromRectAndRadius(rect, Radius.circular(20.0)), paint);
   }
 }
